@@ -1,0 +1,217 @@
+/* Auth.css - MilkTrace Branded Design with Images */
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Chèn hình ảnh nền về trang trại sạch, sử dụng lớp phủ màu để làm nổi bật form */
+  background: linear-gradient(rgba(224, 234, 252, 0.7), rgba(207, 222, 243, 0.7)), 
+              url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&q=80&w=2070') center/cover no-repeat;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  overflow: hidden;
+  position: relative;
+  
+  /* BỔ SUNG: Padding để tạo khoảng cách với viền màn hình trên điện thoại */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Các vòng tròn trang trí tạo chiều sâu */
+.auth-container::before, .auth-container::after {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 0;
+}
+.auth-container::before { top: -150px; right: -150px; }
+.auth-container::after { bottom: -150px; left: -150px; }
+
+.auth-card {
+  /* Hiệu ứng kính mờ cho phép nhìn xuyên qua lớp nền hình ảnh */
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 40px;
+  border-radius: 28px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  
+  /* BỔ SUNG: Đảm bảo form không tràn ra ngoài trên mobile */
+  width: 100%; 
+  max-width: 420px;
+  
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  z-index: 1;
+  text-align: center;
+  box-sizing: border-box; /* Bổ sung để padding không làm tăng width */
+}
+
+.auth-header {
+  margin-bottom: 30px;
+}
+
+/* Ảnh đại diện thương hiệu (Logo bò sữa) */
+.brand-image {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  display: block;
+  border-radius: 50%;
+  background-color: #1a4a5e; 
+  padding: 2px; 
+  object-fit: contain; 
+  border: 2px solid #2c3e50; 
+  box-shadow: 0 0 20px rgba(52, 152, 219, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-clip: content-box; 
+}
+
+.brand-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(52, 152, 219, 0.9);
+}
+
+.auth-header h2 {
+  color: #1a2a6c;
+  margin: 0;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.auth-header p {
+  color: #5d6d7e;
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 14px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid rgba(225, 232, 240, 0.8);
+  border-radius: 14px;
+  box-sizing: border-box;
+  font-size: 15px;
+  background: rgba(248, 250, 252, 0.9);
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #3498db;
+  background: #fff;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.15);
+}
+
+.recaptcha-container {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+  transform: scale(0.9);
+}
+
+.btn-auth {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.3);
+}
+
+.btn-auth:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(52, 152, 219, 0.4);
+}
+
+.btn-auth:disabled {
+  background: #cbd5e1;
+  box-shadow: none;
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 0.8s infinite linear;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.auth-footer {
+  margin-top: 25px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.toggle-link {
+  color: #3498db;
+  cursor: pointer;
+  font-weight: 800;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.toggle-link:hover {
+  text-decoration: underline;
+}
+
+/* =========================================================
+   THÊM MỚI: TỐI ƯU HIỂN THỊ TRÊN ĐIỆN THOẠI (RESPONSIVE)
+========================================================= */
+@media (max-width: 480px) {
+  .auth-container {
+    /* Thu hẹp khoảng cách viền xuống 15px để tiết kiệm chỗ trên màn hình siêu nhỏ */
+    padding: 15px; 
+  }
+
+  .auth-card {
+    /* Thu hẹp lề bên trong form, giúp form nhỏ gọn lại và nhường chỗ cho hình nền */
+    padding: 30px 20px; 
+    border-radius: 20px;
+  }
+
+  .brand-image {
+    width: 80px;  /* Thu nhỏ logo một chút */
+    height: 80px;
+    margin-bottom: 15px;
+  }
+
+  .auth-header h2 {
+    font-size: 26px; /* Giảm cỡ chữ tiêu đề */
+  }
+
+  .input-group input {
+    padding: 12px 15px; /* Nút gõ chữ gọn lại */
+  }
+
+  .btn-auth {
+    padding: 14px;
+    font-size: 16px;
+  }
+}

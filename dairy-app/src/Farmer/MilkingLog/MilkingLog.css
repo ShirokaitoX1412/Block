@@ -1,0 +1,326 @@
+/* ==============================================================
+   MILKING LOG STYLES (Nhật ký Vắt Sữa & Xuất Kho)
+============================================================== */
+
+.ml-container {
+  padding: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+/* ==============================================================
+   THANH TAB ĐIỀU HƯỚNG (Tabs)
+============================================================== */
+.ml-tabs-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ecf0f1;
+  padding-bottom: 10px;
+  flex-wrap: wrap; /* Tự rớt dòng trên Mobile */
+}
+
+.ml-tab-btn {
+  flex: 1 1 auto;
+  padding: 12px 20px;
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.ml-tab-btn.active-blue { background-color: #2980b9; color: white; }
+.ml-tab-btn.active-orange { background-color: #e67e22; color: white; }
+.ml-tab-btn.inactive { background-color: #ecf0f1; color: #7f8c8d; }
+.ml-tab-btn.inactive:hover { background-color: #bdc3c7; }
+
+/* ==============================================================
+   BỐ CỤC CHUNG (Dùng chung cho cả 2 Tab)
+============================================================== */
+.ml-layout {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ml-col-left {
+  flex: 1 1 min(100%, 350px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ml-col-right {
+  flex: 2 1 min(100%, 600px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ml-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.ml-card-header {
+  padding: 15px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ml-card-header h3 {
+  margin: 0;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ml-card-body {
+  padding: 20px;
+}
+
+/* ==============================================================
+   FORM NHẬP LIỆU LÔ SỮA
+============================================================== */
+.ml-form-group {
+  margin-bottom: 15px;
+}
+
+.ml-form-group label {
+  display: block;
+  font-weight: bold;
+  color: #34495e;
+  margin-bottom: 8px;
+}
+
+.ml-input, .ml-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 0.95em;
+}
+
+.ml-input:focus, .ml-select:focus {
+  border-color: #e67e22;
+  outline: none;
+  box-shadow: 0 0 5px rgba(230, 126, 34, 0.3);
+}
+
+.ml-date-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.ml-date-col {
+  flex: 1 1 150px;
+}
+
+.ml-warning-text {
+  color: #e74c3c;
+  margin-top: 5px;
+  display: block;
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+.ml-btn-submit {
+  width: 100%;
+  padding: 15px;
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+  margin-top: 15px;
+}
+.ml-btn-submit:hover { background-color: #d35400; }
+
+/* ==============================================================
+   THANH TÌM KIẾM & BẢNG DANH SÁCH LÔ SỮA
+============================================================== */
+.ml-search-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ml-search-input {
+  flex: 1 1 min(100%, 200px);
+  padding: 10px 15px;
+  border: 1px solid #bdc3c7;
+  border-radius: 8px;
+  font-size: 0.95em;
+}
+
+.ml-btn-sync {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+.ml-btn-sync:disabled { background-color: #95a5a6; cursor: not-allowed; }
+
+/* Bảng Mobile-friendly */
+.ml-table-wrapper {
+  overflow-x: auto;
+}
+
+.ml-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.ml-table th {
+  background: #f8f9fa;
+  padding: 12px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  color: #34495e;
+  font-size: 0.9em;
+}
+
+.ml-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ecf0f1;
+  color: #2c3e50;
+  vertical-align: middle;
+}
+
+.ml-badge-ph { color: #8e44ad; font-weight: bold; }
+.ml-badge-temp { color: #e74c3c; font-weight: bold; }
+
+.ml-btn-qr {
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+/* ==============================================================
+   TAB 2: GOM LÔ XUẤT KHO XE BỒN
+============================================================== */
+.ml-xuatkho-layout {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* Tự rớt dòng trên điện thoại */
+}
+
+.ml-xuatkho-left {
+  flex: 2 1 min(100%, 500px);
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  box-sizing: border-box;
+}
+
+.ml-xuatkho-right {
+  flex: 1 1 min(100%, 350px);
+  box-sizing: border-box;
+}
+
+.ml-alert-box {
+  color: #e74c3c;
+  font-style: italic;
+  padding: 20px;
+  background: #fadbd8;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.ml-btn-gomlo {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #e67e22;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: bold;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+.ml-btn-gomlo:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* QR Vận đơn (Master QR) */
+.ml-master-qr-card {
+  background: #fdf2e9;
+  border: 3px dashed #e67e22;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.ml-master-qr-title {
+  color: #d35400;
+  margin: 0 0 5px 0;
+}
+
+.ml-master-qr-canvas {
+  margin: 20px 0;
+  background: white;
+  padding: 15px;
+  display: inline-block;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.ml-master-qr-info {
+  text-align: left;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.95em;
+  color: #2c3e50;
+}
+
+.ml-master-qr-info p {
+  margin: 0 0 8px 0;
+}
+
+.ml-empty-qr-state {
+  background: #fcfcfc;
+  padding: 40px 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: #7f8c8d;
+  border: 2px dashed #bdc3c7;
+}

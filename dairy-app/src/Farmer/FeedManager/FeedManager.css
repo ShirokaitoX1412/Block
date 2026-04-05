@@ -1,0 +1,243 @@
+/* ==============================================================
+   FEED MANAGER STYLES (Quản lý Kho Thức Ăn)
+============================================================== */
+
+.fdm-container {
+  padding: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.fdm-title {
+  color: #2c3e50;
+  border-bottom: 3px solid #e67e22;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  flex-wrap: wrap;
+}
+
+.fdm-layout {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap; /* Tự rớt dòng trên Mobile */
+}
+
+/* ==============================================================
+   CỘT TRÁI: FORM KHAI BÁO
+============================================================== */
+.fdm-col-form {
+  flex: 1 1 min(100%, 350px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fdm-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.fdm-card-header {
+  padding: 15px 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fdm-card-header h3 {
+  margin: 0;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fdm-card-body {
+  padding: 20px;
+}
+
+.fdm-form-group {
+  margin-bottom: 15px;
+}
+
+.fdm-form-group label {
+  display: block;
+  font-weight: bold;
+  color: #34495e;
+  margin-bottom: 8px;
+}
+
+.fdm-input, .fdm-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 0.95em;
+  transition: 0.2s;
+}
+
+.fdm-input:focus, .fdm-select:focus {
+  border-color: #e67e22;
+  outline: none;
+  box-shadow: 0 0 5px rgba(230, 126, 34, 0.3);
+}
+
+.fdm-input:disabled {
+  background: #ecf0f1;
+  color: #7f8c8d;
+  cursor: not-allowed;
+  font-weight: bold;
+}
+
+.fdm-btn-submit {
+  width: 100%;
+  padding: 15px;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  background-color: #e67e22;
+  box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+}
+
+.fdm-btn-submit:hover:not(:disabled) {
+  background-color: #d35400;
+}
+
+.fdm-btn-submit:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.fdm-btn-cancel {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  color: #7f8c8d;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ==============================================================
+   CỘT PHẢI: TÌM KIẾM & BẢNG DANH SÁCH
+============================================================== */
+.fdm-col-list {
+  flex: 2 1 min(100%, 600px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fdm-search-bar {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 8px 15px;
+  border: 1px solid #bdc3c7;
+}
+
+.fdm-search-bar input {
+  border: none;
+  background: transparent;
+  padding: 8px;
+  width: 100%;
+  outline: none;
+  font-size: 0.95em;
+  margin-left: 10px;
+}
+
+/* Xử lý Table trên Mobile */
+.fdm-table-wrapper {
+  overflow-x: auto;
+}
+
+.fdm-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 550px; 
+}
+
+.fdm-table th {
+  background: #f8f9fa;
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  color: #34495e;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.fdm-table td {
+  padding: 15px 12px;
+  border-bottom: 1px solid #ecf0f1;
+  color: #2c3e50;
+  vertical-align: middle;
+  font-size: 0.95em;
+}
+
+/* Style cho các nhãn phân loại */
+.fdm-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85em;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+.fdm-tag-leaf { color: #27ae60; background: #e9f7ef; }
+.fdm-tag-box { color: #8e44ad; background: #f5eef8; }
+
+.fdm-badge {
+  font-size: 0.8em;
+  padding: 3px 8px;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+}
+.fdm-badge-green { background-color: #2ecc71; }
+.fdm-badge-blue { background-color: #3498db; }
+
+/* Nút thao tác trong bảng */
+.fdm-action-group {
+  display: flex;
+  gap: 10px;
+}
+
+.fdm-btn-icon {
+  background: none;
+  border: none;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fdm-btn-icon.edit { color: #f39c12; background: #fef5e7; }
+.fdm-btn-icon.delete { color: #e74c3c; background: #fdedec; }
+.fdm-btn-icon:hover { opacity: 0.8; transform: scale(1.05); }

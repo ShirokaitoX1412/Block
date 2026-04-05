@@ -1,0 +1,383 @@
+/* ==============================================================
+   CONSUMER APP STYLES (Cổng Tra Cứu Khách Hàng)
+============================================================== */
+
+.csm-container {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f6f8;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+/* ==============================================================
+   HEADER BẢO MẬT
+============================================================== */
+.csm-header {
+  background-color: #27ae60;
+  padding: 30px 20px 40px 20px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+
+.csm-header h2 {
+  margin: 0;
+  letter-spacing: 1px;
+  font-size: 1.5em;
+}
+
+.csm-header p {
+  margin: 5px 0 0 0;
+  opacity: 0.9;
+  font-size: 0.9em;
+}
+
+.csm-content-wrapper {
+  max-width: 500px;
+  margin: -30px auto 0 auto; /* Kéo khung nội dung chồm lên phần header xanh */
+  padding: 0 20px;
+  position: relative;
+  z-index: 10;
+}
+
+/* ==============================================================
+   MÀN HÌNH CHỜ QUÉT MÃ (EMPTY STATE)
+============================================================== */
+.csm-scan-card {
+  background: white;
+  padding: 40px 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.csm-scan-card img {
+  width: 130px;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.csm-scan-card h3 {
+  color: #2c3e50;
+  margin-top: 0;
+  font-size: 1.3em;
+}
+
+.csm-scan-card p {
+  color: #7f8c8d;
+  margin-bottom: 30px;
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+.csm-btn-scan {
+  width: 100%;
+  padding: 15px;
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(41, 128, 185, 0.3);
+  transition: 0.3s;
+}
+
+.csm-btn-scan:hover {
+  background-color: #2471a3;
+  transform: translateY(-2px);
+}
+
+.csm-camera-box {
+  border: 4px dashed #27ae60;
+  border-radius: 15px;
+  overflow: hidden;
+  padding: 5px;
+  background: #f8f9fa;
+}
+
+.csm-btn-cancel {
+  margin: 20px auto 0 auto;
+  padding: 10px 25px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: 0.3s;
+}
+
+.csm-btn-cancel:hover { background-color: #c0392b; }
+
+/* Custom CSS cho thư viện Html5QrcodeScanner */
+#consumer-qr-reader { border: none !important; }
+#consumer-qr-reader img { display: none !important; }
+#consumer-qr-reader button {
+  background-color: #2980b9; color: white; border: none;
+  padding: 8px 15px; border-radius: 8px; font-weight: bold;
+  cursor: pointer; margin: 5px; transition: 0.3s;
+}
+#consumer-qr-reader button:hover { background-color: #34495e; }
+#consumer-qr-reader select {
+  padding: 8px; border-radius: 5px; margin-bottom: 10px; max-width: 100%; border: 1px solid #ccc;
+}
+
+/* ==============================================================
+   MÀN HÌNH KẾT QUẢ SẢN PHẨM (PRODUCT RESULT)
+============================================================== */
+.csm-product-card {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+  border-top: 5px solid #27ae60;
+}
+
+.csm-product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.csm-product-title {
+  color: #2c3e50;
+  margin: 0 0 8px 0;
+  font-size: 1.2em;
+}
+
+.csm-product-batch {
+  color: #7f8c8d;
+  margin: 0;
+  font-size: 0.85em;
+  background: #ecf0f1;
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+
+.csm-dates-container {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.csm-date-box { flex: 1; }
+.csm-date-box.divider { border-left: 1px solid #ddd; padding-left: 15px; }
+.csm-date-label { color: #95a5a6; display: block; margin-bottom: 3px; font-size: 0.85em; }
+.csm-date-val { color: #2c3e50; font-weight: bold; }
+.csm-date-val.exp { color: #e74c3c; }
+
+/* ==============================================================
+   TIMELINE (Hành trình chuỗi cung ứng)
+============================================================== */
+.csm-timeline-heading {
+  color: #2c3e50;
+  text-align: center;
+  margin: 30px 0 20px 0;
+  font-size: 1.3em;
+  text-transform: uppercase;
+}
+
+.csm-timeline {
+  position: relative;
+  padding-left: 40px;
+  margin-left: 10px;
+}
+
+.csm-timeline-line {
+  position: absolute;
+  left: 19px;
+  top: 20px;
+  bottom: 20px;
+  width: 3px;
+  background: #bdc3c7;
+  z-index: 0;
+}
+
+.csm-timeline-item {
+  position: relative;
+  margin-bottom: 35px;
+  z-index: 1;
+}
+
+.csm-timeline-item.last {
+  margin-bottom: 10px;
+}
+
+.csm-timeline-icon {
+  position: absolute;
+  left: -58px;
+  top: 0;
+  color: white;
+  padding: 12px;
+  border-radius: 50%;
+  border: 4px solid #f4f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.csm-timeline-content {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.csm-timeline-title {
+  margin: 0 0 5px 0;
+  font-size: 1.1em;
+}
+
+/* Màu sắc từng bước */
+.step-4-icon { background: #3498db; }
+.step-4-content { border-left: 4px solid #3498db; }
+.step-4-title { color: #2980b9; }
+
+.step-3-icon { background: #9b59b6; }
+.step-3-content { border-left: 4px solid #9b59b6; }
+.step-3-title { color: #8e44ad; }
+
+.step-2-icon { background: #f39c12; }
+.step-2-content { border-left: 4px solid #f39c12; }
+.step-2-title { color: #d35400; }
+
+.step-1-icon { background: #27ae60; }
+.step-1-content { border-left: 4px solid #27ae60; }
+.step-1-title { color: #27ae60; }
+
+.csm-step-desc { margin: 0; font-size: 0.9em; color: #7f8c8d; }
+.csm-step-meta { margin: 5px 0 0 0; font-size: 0.85em; color: #95a5a6; }
+.csm-step-success { color: #27ae60; font-weight: bold; margin: 8px 0 0 0; font-size: 0.85em; display: flex; alignItems: center; gap: 5px; }
+
+/* Box thông tin trang trại */
+.csm-farm-box {
+  background: #e9f7ef;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.85em;
+  color: #2c3e50;
+  margin-top: 10px;
+}
+.csm-farm-box p { margin: 0 0 5px 0; }
+.csm-farm-box p:last-child { margin: 0; }
+
+.csm-btn-reset {
+  width: 100%;
+  marginTop: 30px;
+  padding: 15px;
+  background-color: #ecf0f1;
+  color: #34495e;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* ==============================================================
+   FORM NHẬP MÃ THỦ CÔNG (MANUAL INPUT)
+============================================================== */
+.csm-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 25px 0;
+  color: #95a5a6;
+  font-size: 0.9em;
+  font-weight: bold;
+}
+.csm-divider::before, .csm-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #ecf0f1;
+}
+.csm-divider:not(:empty)::before { margin-right: .5em; }
+.csm-divider:not(:empty)::after { margin-left: .5em; }
+
+.csm-manual-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.csm-manual-input {
+  flex: 1;
+  padding: 15px 20px;
+  border: 1px solid #bdc3c7;
+  border-radius: 30px;
+  font-size: 1em;
+  outline: none;
+  transition: 0.3s;
+}
+
+.csm-manual-input:focus {
+  border-color: #27ae60;
+  box-shadow: 0 0 5px rgba(39, 174, 96, 0.3);
+}
+
+.csm-btn-search {
+  padding: 15px 25px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+}
+
+.csm-btn-search:hover {
+  background-color: #219653;
+  transform: translateY(-2px);
+}
+
+/* ==============================================================
+   NÚT TẢI ẢNH LÊN (UPLOAD IMAGE)
+============================================================== */
+.csm-btn-upload {
+  width: 100%;
+  padding: 15px;
+  background-color: #8e44ad;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+  transition: 0.3s;
+  margin-top: 15px;
+}
+
+.csm-btn-upload:hover {
+  background-color: #732d91;
+  transform: translateY(-2px);
+}
+
+.csm-btn-reset:hover { background-color: #bdc3c7; }

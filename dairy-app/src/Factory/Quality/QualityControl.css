@@ -1,0 +1,306 @@
+/* ==============================================================
+   QUALITY CONTROL STYLES (Phòng Lab QC)
+============================================================== */
+
+.qc-container {
+  padding: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.qc-title {
+  color: #2c3e50;
+  border-bottom: 3px solid #8e44ad;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  flex-wrap: wrap;
+}
+
+.qc-layout {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Các cột layout chính */
+.qc-col-list {
+  flex: 1 1 min(100%, 400px);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.qc-col-form {
+  flex: 1 1 min(100%, 500px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Thẻ Card chung (Khung trắng bo góc) */
+.qc-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.qc-card-title {
+  margin: 0 0 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1em;
+}
+.qc-card-title.orange { color: #e67e22; }
+.qc-card-title.dark { color: #2c3e50; }
+
+.qc-empty-text {
+  color: #7f8c8d;
+  font-style: italic;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Danh sách bồn chờ kiểm định */
+.qc-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.qc-list-item {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  background: white;
+  transition: all 0.2s;
+}
+
+/* Hiệu ứng khi được chọn (Click vào) */
+.qc-list-item.active {
+  border: 2px solid #8e44ad;
+  background: #fdfaff;
+  box-shadow: 0 4px 10px rgba(142, 68, 173, 0.1);
+}
+
+.qc-list-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.qc-list-header strong {
+  color: #2c3e50;
+  font-size: 0.95em;
+}
+
+.qc-badge-pending {
+  background: #f39c12;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 15px;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.qc-list-meta {
+  font-size: 0.85em;
+  color: #7f8c8d;
+}
+.qc-list-meta strong { color: #27ae60; }
+
+/* Lịch sử kiểm định */
+.qc-history-container {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.qc-history-item {
+  padding: 12px 10px;
+  border-bottom: 1px solid #ecf0f1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.qc-history-info { overflow: hidden; }
+.qc-history-info strong {
+  font-size: 0.9em;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.qc-history-info small { color: #7f8c8d; }
+
+.qc-badge-success { color: #27ae60; font-weight: bold; font-size: 0.85em; display: flex; align-items: center; gap: 4px; }
+.qc-badge-error { color: #c0392b; font-weight: bold; font-size: 0.85em; display: flex; align-items: center; gap: 4px; }
+
+/* ==============================================================
+   KHUNG BÊN PHẢI: FORM NHẬP KẾT QUẢ LAB
+============================================================== */
+.qc-form-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border-top: 5px solid #8e44ad;
+}
+
+.qc-form-title {
+  margin-top: 0;
+  color: #8e44ad;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+/* Thông tin bồn đang chọn */
+.qc-form-info {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  font-size: 0.9em;
+  border: 1px solid #eee;
+}
+
+.qc-form-info-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.qc-form-info-row.last { margin-bottom: 0; color: #7f8c8d; }
+.qc-form-info-row strong { color: #7f8c8d; }
+.qc-form-info-row .val { color: #2980b9; font-weight: bold; text-align: right; word-break: break-all; }
+
+/* Các ô input nhập liệu */
+.qc-form-group-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.qc-form-group {
+  flex: 1 1 200px;
+  margin-bottom: 15px;
+}
+
+.qc-form-group label {
+  font-weight: bold;
+  color: #34495e;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.qc-input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #bdc3c7;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.qc-input-hint {
+  color: #95a5a6;
+  display: block;
+  margin-top: 5px;
+  font-size: 0.85em;
+}
+
+/* Đổi màu text khi phát hiện kháng sinh */
+.qc-text-danger { color: #c0392b; font-weight: bold; }
+.qc-text-success { color: #27ae60; font-weight: bold; }
+
+/* Khu vực Nút bấm */
+.qc-btn-row {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.qc-btn-approve {
+  flex: 2 1 200px;
+  padding: 15px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+  transition: 0.2s;
+}
+
+.qc-btn-reject {
+  flex: 1 1 150px;
+  padding: 15px;
+  background-color: #c0392b;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  transition: 0.2s;
+}
+
+.qc-btn-approve:hover { background-color: #219653; }
+.qc-btn-reject:hover { background-color: #a93226; }
+
+/* Cảnh báo đỏ */
+.qc-alert {
+  background: #fdedec;
+  padding: 15px;
+  border-radius: 8px;
+  color: #c0392b;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  border: 1px solid #e6b0aa;
+}
+
+/* Trạng thái chưa chọn bồn (Màn hình trống) */
+.qc-empty-state {
+  background: #fcfcfc;
+  padding: 60px 20px;
+  border-radius: 12px;
+  text-align: center;
+  color: #7f8c8d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #bdc3c7;
+  min-height: 300px;
+}
+
+.qc-empty-state h3 { margin: 0 0 10px 0; color: #95a5a6; }
+.qc-empty-state p { margin: 0; font-size: 0.95em; }

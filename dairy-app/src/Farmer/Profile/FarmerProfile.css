@@ -1,0 +1,237 @@
+/* ==============================================================
+   FARMER MANAGER STYLES (Quản lý Nông Dân)
+============================================================== */
+
+.frm-container {
+  padding: 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+.frm-title {
+  color: #2c3e50;
+  border-bottom: 3px solid #27ae60;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  flex-wrap: wrap;
+}
+
+.frm-layout {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap; /* Tự rớt dòng trên màn hình nhỏ */
+}
+
+/* ==============================================================
+   CỘT TRÁI: FORM THÊM MỚI / CHỈNH SỬA
+============================================================== */
+.frm-col-form {
+  flex: 1 1 min(100%, 350px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.frm-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.frm-card-header {
+  padding: 15px 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.frm-card-header h3 {
+  margin: 0;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.frm-card-body {
+  padding: 20px;
+}
+
+.frm-form-group {
+  margin-bottom: 15px;
+}
+
+.frm-form-group label {
+  display: block;
+  font-weight: bold;
+  color: #34495e;
+  margin-bottom: 8px;
+}
+
+.frm-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bdc3c7;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 0.95em;
+  transition: 0.2s;
+}
+
+.frm-input:focus {
+  border-color: #27ae60;
+  outline: none;
+  box-shadow: 0 0 5px rgba(39, 174, 96, 0.3);
+}
+
+.frm-input-disabled {
+  background: #f4f6f8;
+  color: #7f8c8d;
+  cursor: not-allowed;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.frm-error-text {
+  color: #e74c3c;
+  font-weight: bold;
+  font-size: 0.85em;
+  display: block;
+  margin-top: 5px;
+}
+
+.frm-btn-submit {
+  width: 100%;
+  padding: 15px;
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.frm-btn-submit:hover:not(:disabled) {
+  background-color: #219653;
+}
+
+.frm-btn-submit:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.frm-btn-cancel {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  color: #7f8c8d;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.frm-btn-cancel:hover {
+  color: #34495e;
+}
+
+/* ==============================================================
+   CỘT PHẢI: TÌM KIẾM & BẢNG DANH SÁCH
+============================================================== */
+.frm-col-list {
+  flex: 2 1 min(100%, 600px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.frm-search-bar {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 8px 15px;
+  border: 1px solid #bdc3c7;
+}
+
+.frm-search-bar input {
+  border: none;
+  background: transparent;
+  padding: 8px;
+  width: 100%;
+  outline: none;
+  font-size: 0.95em;
+  margin-left: 10px;
+}
+
+/* Bảng danh sách Mobile-friendly */
+.frm-table-wrapper {
+  overflow-x: auto;
+}
+
+.frm-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 550px;
+}
+
+.frm-table th {
+  background: #f8f9fa;
+  padding: 15px 12px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+  color: #34495e;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.frm-table td {
+  padding: 15px 12px;
+  border-bottom: 1px solid #ecf0f1;
+  color: #2c3e50;
+  vertical-align: middle;
+}
+
+/* Thông tin trong bảng */
+.frm-id-text { color: #27ae60; font-weight: bold; font-size: 1.05em; }
+.frm-name-text { font-weight: 600; color: #2c3e50; }
+.frm-sub-text { color: #7f8c8d; font-size: 0.85em; display: block; margin-top: 3px; }
+.frm-phone-text { font-weight: bold; color: #2980b9; }
+
+/* Nút thao tác */
+.frm-action-group {
+  display: flex;
+  gap: 10px;
+}
+
+.frm-btn-icon {
+  background: none;
+  border: none;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.2s;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.frm-btn-icon.edit { color: #f39c12; background: #fef5e7; }
+.frm-btn-icon.delete { color: #e74c3c; background: #fdedec; }
+.frm-btn-icon:hover { opacity: 0.8; transform: scale(1.05); }
