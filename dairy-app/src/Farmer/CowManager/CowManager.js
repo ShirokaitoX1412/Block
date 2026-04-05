@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'; 
 import { QRCodeCanvas } from 'qrcode.react'; 
 import { FaPaw, FaSearch, FaEdit, FaQrcode, FaTimes, FaListAlt } from 'react-icons/fa';
-import { useFarmContract } from '../../hooks/useFarmContract';
 import './CowManager.css'; 
 import { BASE_URL } from '../../config'; 
 
@@ -15,10 +14,6 @@ const CowManager = () => {
   const [showQR, setShowQR] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Trạng thái blockchain
-  const [blockchainStatus, setBlockchainStatus] = useState(null);
-  // null | 'pending' | 'success' | 'failed'
-
   const [filters, setFilters] = useState({ keyword: '', breed: '' });
 
   const initialFormState = {
@@ -30,8 +25,6 @@ const CowManager = () => {
   };
   const [formData, setFormData] = useState(initialFormState);
 
-  const { registerCowOnChain } = useFarmContract();
-
   useEffect(() => { fetchCows(); }, []);
 
   const fetchCows = async () => {
@@ -39,7 +32,9 @@ const CowManager = () => {
     try {
       const response = await axios.get(API_URL);
       setCows(response.data);
-    } catch (error) { console.error("Lỗi kết nối Backend"); }
+    } catch (error) { 
+      console.error("Lỗi kết nối Backend"); 
+    }
     setLoading(false);
   };
 
@@ -57,46 +52,24 @@ const CowManager = () => {
     e.preventDefault();
     if (isSubmitting) return;
     setIsSubmitting(true);
-    setBlockchainStatus(null);
 
     try {
       if (isEditing) {
-        // Cập nhật backend như cũ
+        // Cập nhật backend
         await axios.put(`${API_URL}/${formData.id}`, formData);
         alert("✅ Đã cập nhật hồ sơ!");
       } else {
+        // Thêm mới backend (Off-chain)
         const newId = generateNextCowId();
-
-        // Bước 1: Ghi vào backend như cũ
         await axios.post(API_URL, { ...formData, id: newId });
-
-        // Bước 2: Ghi lên blockchain
-        setBlockchainStatus('pending');
-        const txHash = await registerCowOnChain(newId, formData.breed, formData.dob);
-
-        if (txHash) {
-          setBlockchainStatus('success');
-          alert(
-            `✅ Khai sinh thành công mã: ${newId}\n` +
-            `🔗 Đã ghi lên Blockchain!\n` +
-            `TX: ${txHash}\n\n` +
-            `Xem tại: https://sepolia.etherscan.io/tx/${txHash}`
-          );
-        } else {
-          setBlockchainStatus('failed');
-          alert(
-            `✅ Khai sinh thành công mã: ${newId}\n` +
-            `⚠️ Lưu backend OK nhưng chưa ghi được blockchain.\n` +
-            `Kiểm tra MetaMask và thử lại.`
-          );
-        }
+        alert(`✅ Khai sinh thành công mã bò: ${newId}`);
       }
 
       fetchCows();
       setFormData(initialFormState);
       setIsEditing(false);
     } catch (error) { 
-      alert("Lỗi hệ thống! Hãy kiểm tra Server cổng 5000");
+      alert("Lỗi hệ thống! Hãy kiểm tra kết nối Server Backend.");
     } finally { 
       setIsSubmitting(false); 
     }
@@ -107,33 +80,6 @@ const CowManager = () => {
     cow.breed.toLowerCase().includes(filters.keyword.toLowerCase()) ||
     cow.origin.toLowerCase().includes(filters.keyword.toLowerCase())
   );
-
-  // Hiển thị trạng thái blockchain
-  const renderBlockchainStatus = () => {
-    if (!blockchainStatus) return null;
-    const styles = {
-      pending: { background: '#fff3cd', color: '#856404', border: '1px solid #ffc107' },
-      success: { background: '#d1e7dd', color: '#0a3622', border: '1px solid #198754' },
-      failed:  { background: '#f8d7da', color: '#58151c', border: '1px solid #dc3545' },
-    };
-    const messages = {
-      pending: '⏳ Đang ghi lên Blockchain, vui lòng xác nhận trên MetaMask...',
-      success: '🔗 Đã ghi lên Blockchain Sepolia thành công!',
-      failed:  '⚠️ Chưa ghi được Blockchain. Kiểm tra MetaMask.',
-    };
-    return (
-      <div style={{
-        ...styles[blockchainStatus],
-        padding: '10px 14px',
-        borderRadius: '8px',
-        marginBottom: '12px',
-        fontSize: '0.9em',
-        fontWeight: '500'
-      }}>
-        {messages[blockchainStatus]}
-      </div>
-    );
-  };
 
   return (
     <div className="cm-container fade-in">
@@ -151,10 +97,6 @@ const CowManager = () => {
             </div>
             
             <div className="cm-card-body">
-
-              {/* Trạng thái blockchain */}
-              {renderBlockchainStatus()}
-
               <form onSubmit={handleSubmit}>
                 <div className="cm-form-group">
                   <label>Mã bò (Tự động):</label>
@@ -203,14 +145,14 @@ const CowManager = () => {
                   disabled={isSubmitting}
                 >
                   {isSubmitting 
-                    ? (blockchainStatus === 'pending' ? "Đang ghi Blockchain..." : "Đang xử lý...") 
-                    : (isEditing ? "Lưu hồ sơ" : "Tạo mã QR & Lưu lên Blockchain")}
+                    ? "Đang xử lý..." 
+                    : (isEditing ? "Lưu hồ sơ" : "Tạo mã QR & Lưu dữ liệu")}
                 </button>
 
                 {isEditing && (
                   <button 
                     type="button" 
-                    onClick={() => { setIsEditing(false); setFormData(initialFormState); setBlockchainStatus(null); }}
+                    onClick={() => { setIsEditing(false); setFormData(initialFormState); }}
                     style={{width: '100%', marginTop: '10px', padding: '10px', background: 'transparent', border: 'none', color: '#7f8c8d', cursor: 'pointer', fontWeight: 'bold'}}
                   >
                     Hủy chỉnh sửa
@@ -253,7 +195,6 @@ const CowManager = () => {
                         <th>Mã Bò</th>
                         <th>Giống</th>
                         <th>Nguồn gốc</th>
-                        <th>Blockchain</th>
                         <th>Thao tác</th>
                       </tr>
                     </thead>
@@ -264,32 +205,18 @@ const CowManager = () => {
                           <td>{cow.breed}</td>
                           <td style={{color: '#7f8c8d', fontSize: '0.9em'}}>{cow.origin}</td>
                           <td>
-                            {cow.txHash ? (
-                              <a 
-                                href={`https://sepolia.etherscan.io/tx/${cow.txHash}`} 
-                                target="_blank" 
-                                rel="noreferrer"
-                                style={{color: '#27ae60', fontSize: '0.85em', fontWeight: '600'}}
-                              >
-                                🔗 On-chain
-                              </a>
-                            ) : (
-                              <span style={{color: '#bdc3c7', fontSize: '0.85em'}}>— chưa ghi</span>
-                            )}
-                          </td>
-                          <td>
                             <div className="cm-action-group">
                               <button className="cm-btn-icon qr" onClick={() => setShowQR(cow)} title="Xem mã QR">
                                 <FaQrcode />
                               </button>
-                              <button className="cm-btn-icon edit" onClick={() => {setFormData(cow); setIsEditing(true); setBlockchainStatus(null);}} title="Sửa hồ sơ">
+                              <button className="cm-btn-icon edit" onClick={() => {setFormData(cow); setIsEditing(true);}} title="Sửa hồ sơ">
                                 <FaEdit />
                               </button>
                             </div>
                           </td>
                         </tr>
                       )) : (
-                        <tr><td colSpan="5" style={{textAlign: 'center', padding: '20px', color: '#95a5a6'}}>Không tìm thấy kết quả nào.</td></tr>
+                        <tr><td colSpan="4" style={{textAlign: 'center', padding: '20px', color: '#95a5a6'}}>Không tìm thấy kết quả nào.</td></tr>
                       )}
                     </tbody>
                   </table>
@@ -314,16 +241,6 @@ const CowManager = () => {
             <p style={{marginTop: '15px', fontSize: '0.9em', color: '#7f8c8d'}}>
               Dùng máy quét của Nông trại để đọc mã thẻ tai này.
             </p>
-            {showQR.txHash && (
-              <a 
-                href={`https://sepolia.etherscan.io/tx/${showQR.txHash}`}
-                target="_blank"
-                rel="noreferrer"
-                style={{display: 'block', marginTop: '8px', color: '#27ae60', fontSize: '0.85em'}}
-              >
-                🔗 Xem trên Blockchain
-              </a>
-            )}
           </div>
         </div>
       )}

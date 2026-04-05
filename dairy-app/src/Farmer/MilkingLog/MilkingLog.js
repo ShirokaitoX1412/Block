@@ -42,12 +42,13 @@ const MilkingLog = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
+        // CÁCH VIẾT MỚI: Bọc lỗi cho từng API. 1 cái lỗi thì các cái khác vẫn chạy!
         const [cowsRes, feedsRes, logsRes, farmersRes, healthRes] = await Promise.all([
-          axios.get(`${BASE_URL}/cows`), 
-          axios.get(`${BASE_URL}/feeds`),
-          axios.get(`${BASE_URL}/milk-logs`), 
-          axios.get(`${BASE_URL}/farmers`),
-          axios.get(`${BASE_URL}/health-records`) 
+          axios.get(`${BASE_URL}/cows`).catch(() => ({ data: [] })), 
+          axios.get(`${BASE_URL}/feeds`).catch(() => ({ data: [] })),
+          axios.get(`${BASE_URL}/milk-logs`).catch(() => ({ data: [] })), 
+          axios.get(`${BASE_URL}/farmers`).catch(() => ({ data: [] })),
+          axios.get(`${BASE_URL}/healthRecords`).catch(() => ({ data: [] })) // SỬA TÊN API CHUẨN Ở ĐÂY
         ]);
         
         const allCows = cowsRes.data;
@@ -64,7 +65,9 @@ const MilkingLog = () => {
         setFeeds(feedsRes.data);
         setLogs(logsRes.data.sort((a, b) => new Date(b.date) - new Date(a.date)));
         setFarmers(farmersRes.data);
-      } catch (error) { console.error("Lỗi tải dữ liệu:", error); } 
+      } catch (error) { 
+        console.error("Lỗi tải dữ liệu:", error); 
+      } 
       finally { setLoading(false); }
     };
     
@@ -117,17 +120,12 @@ const MilkingLog = () => {
     }
   };
 
-  // ==============================================================
-  // HÀM ĐỒNG BỘ ĐÃ FIX LỖI 404 (TỰ ĐỘNG FETCH DỮ LIỆU MỚI NHẤT)
-  // ==============================================================
   const handleSyncToBlockchain = async () => {
     setSyncing(true);
     try {
-      // 1. TẢI LẠI DỮ LIỆU MỚI NHẤT TỪ SERVER TRƯỚC KHI LÀM GÌ ĐÓ
       const freshDataRes = await axios.get(`${BASE_URL}/milk-logs`);
       const freshLogs = freshDataRes.data;
 
-      // 2. LỌC RA NHỮNG LÔ CHƯA ĐỒNG BỘ TỪ DỮ LIỆU MỚI NHẤT NÀY
       const realPendingLogs = freshLogs.filter(log => log.syncStatus === 'Chưa đồng bộ' || !log.syncStatus);
 
       if (realPendingLogs.length === 0) { 
@@ -144,16 +142,14 @@ const MilkingLog = () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
       const fakeTxHash = "0x" + Math.random().toString(16).slice(2, 15);
       
-      // 3. GỬI LÊN SERVER TUẦN TỰ (CHẮC CHẮN 100% ID CÓ THẬT)
       for (const log of realPendingLogs) {
-        if (!log.id) continue; // Bỏ qua nếu dòng nào đó bị lỗi mất ID
+        if (!log.id) continue;
         await axios.patch(`${BASE_URL}/milk-logs/${log.id}`, { 
           syncStatus: 'Đã đồng bộ', 
           txHash: fakeTxHash 
         });
       }
 
-      // 4. CẬP NHẬT GIAO DIỆN SAU KHI XONG
       const finalRes = await axios.get(`${BASE_URL}/milk-logs`);
       setLogs(finalRes.data.sort((a, b) => new Date(b.date) - new Date(a.date)));
       
@@ -173,9 +169,6 @@ const MilkingLog = () => {
     }
   };
 
-  // ==============================================================
-  // HÀM GỘP LÔ CŨNG ĐƯỢC FIX LỖI NGHẼN CỔ CHAI
-  // ==============================================================
   const handleCreateMasterBatch = async () => {
     if (selectedBatches.length === 0) {
       alert("Vui lòng chọn ít nhất 1 lô sữa để đưa lên xe bồn!"); return;
@@ -209,7 +202,6 @@ const MilkingLog = () => {
     };
 
     try {
-      // Gửi cập nhật trạng thái "Đã xuất kho" tuần tự từng cái một
       for (const log of selectedData) {
         if(!log.id) continue;
         await axios.patch(`${BASE_URL}/milk-logs/${log.id}`, { syncStatus: 'Đã xuất kho' });

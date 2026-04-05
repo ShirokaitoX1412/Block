@@ -53,6 +53,13 @@
       "dob": "2026-03-12",
       "origin": "Trại Ba Vì",
       "distinguishingMarks": ""
+    },
+    {
+      "id": "C-1005",
+      "breed": "Holstein Friesian",
+      "dob": "2026-04-06",
+      "origin": "Trại Ba Vì",
+      "distinguishingMarks": ""
     }
   ],
   "feeds": [
@@ -107,21 +114,6 @@
   ],
   "milk-logs": [
     {
-      "id": "BATCH-1773208769177",
-      "batchId": "BATCH-1773208769177",
-      "cowId": "C-1001",
-      "feedId": "TA-01",
-      "farmerId": "FARMER-1773208664176",
-      "quantity": "20",
-      "ph": "6.6",
-      "temperature": "37",
-      "quality": "Đạt chuẩn",
-      "syncStatus": "Đã đồng bộ",
-      "date": "2026-03-11T05:59:29.531Z",
-      "createdAt": "2026-03-11T05:59:29.177Z",
-      "txHash": "0x3c0e120566a24"
-    },
-    {
       "id": "BATCH-1773209423158",
       "batchId": "BATCH-1773209423158",
       "cowId": "C-1001",
@@ -131,9 +123,24 @@
       "ph": "6.6",
       "temperature": "37",
       "quality": "Đạt chuẩn",
-      "syncStatus": "Chưa đồng bộ",
+      "syncStatus": "Đã xuất kho",
       "date": "2026-03-11T06:10:23.720Z",
-      "createdAt": "2026-03-11T06:10:23.158Z"
+      "createdAt": "2026-03-11T06:10:23.158Z",
+      "txHash": "0x2668a73d57829"
+    },
+    {
+      "id": "BATCH-1775398794012",
+      "batchId": "",
+      "cowId": "C-1001",
+      "feedId": "TA-01",
+      "farmerId": "FARMER-1773208664176",
+      "quantity": "4",
+      "ph": "6.6",
+      "temperature": "37",
+      "quality": "Đạt chuẩn",
+      "syncStatus": "Đã xuất kho",
+      "date": "2026-04-05T14:19:54.012Z",
+      "txHash": "0x2668a73d57829"
     }
   ],
   "factory_received": [],
@@ -153,5 +160,6 @@
       "date": "2026-03-11T06:49:07.963Z",
       "createdAt": "2026-03-11T06:49:08.328Z"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
