@@ -1,0 +1,157 @@
+{
+  "users": [],
+  "farmers": [
+    {
+      "id": "FARMER-1773208664176",
+      "email": "minh@gmail.com",
+      "password": "minh",
+      "fullName": "Người dùng mới",
+      "farmName": "Chưa cập nhật",
+      "phone": "",
+      "address": ""
+    },
+    {
+      "id": "FARMER-1773208759210",
+      "fullName": "Hoa",
+      "farmName": "D",
+      "phone": "03",
+      "address": "D"
+    },
+    {
+      "id": "FARMER-1773209878802",
+      "fullName": "nông",
+      "farmName": "2",
+      "phone": "92",
+      "address": "2"
+    }
+  ],
+  "cows": [
+    {
+      "id": "C-1001",
+      "breed": "Holstein Friesian",
+      "dob": "2026-03-11",
+      "origin": "Trại Ba Vì",
+      "distinguishingMarks": ""
+    },
+    {
+      "id": "C-1002",
+      "breed": "Lai Sind",
+      "dob": "2026-03-11",
+      "origin": "Trại hà lan",
+      "distinguishingMarks": ""
+    },
+    {
+      "id": "C-1003",
+      "breed": "Jersey",
+      "dob": "2026-03-12",
+      "origin": "Trại Ba Vì",
+      "distinguishingMarks": ""
+    },
+    {
+      "id": "C-1004",
+      "breed": "Holstein Friesian",
+      "dob": "2026-03-12",
+      "origin": "Trại Ba Vì",
+      "distinguishingMarks": ""
+    }
+  ],
+  "feeds": [
+    {
+      "id": "TA-01",
+      "name": "Ngô",
+      "type": "Thức ăn thô",
+      "source": "Tự trồng",
+      "importDate": "2026-03-11",
+      "mfgDate": "2026-03-12",
+      "expDate": "2026-03-15",
+      "supplier": "",
+      "note": ""
+    },
+    {
+      "id": "TA-02",
+      "name": "xúc xích",
+      "type": "Thức ăn thô",
+      "source": "Tự trồng",
+      "importDate": "2026-03-11",
+      "mfgDate": "2026-03-13",
+      "expDate": "2026-03-20",
+      "supplier": "",
+      "note": ""
+    }
+  ],
+  "healthRecords": [
+    {
+      "cowId": "C-1001",
+      "tinhTrang": "Khỏe mạnh",
+      "chiTietBenh": "Sức khỏe tốt",
+      "weight": "20",
+      "doctor": "Huế",
+      "notes": "",
+      "vaccineDate": "2026-03-11T05:58:57.410Z",
+      "blockchainHash": "0x4b67d9133e",
+      "id": "HR-1773208736917",
+      "createdAt": "2026-03-11T05:58:56.917Z"
+    },
+    {
+      "cowId": "C-1002",
+      "tinhTrang": "Khỏe mạnh",
+      "chiTietBenh": "Sức khỏe tốt",
+      "weight": "90",
+      "doctor": "hiếu",
+      "notes": "",
+      "vaccineDate": "2026-03-11T06:17:18.165Z",
+      "blockchainHash": "0x3b162c0a1e",
+      "id": "HR-1773209838467",
+      "createdAt": "2026-03-11T06:17:18.467Z"
+    }
+  ],
+  "milk-logs": [
+    {
+      "id": "BATCH-1773208769177",
+      "batchId": "BATCH-1773208769177",
+      "cowId": "C-1001",
+      "feedId": "TA-01",
+      "farmerId": "FARMER-1773208664176",
+      "quantity": "20",
+      "ph": "6.6",
+      "temperature": "37",
+      "quality": "Đạt chuẩn",
+      "syncStatus": "Đã đồng bộ",
+      "date": "2026-03-11T05:59:29.531Z",
+      "createdAt": "2026-03-11T05:59:29.177Z",
+      "txHash": "0x3c0e120566a24"
+    },
+    {
+      "id": "BATCH-1773209423158",
+      "batchId": "BATCH-1773209423158",
+      "cowId": "C-1001",
+      "feedId": "TA-01",
+      "farmerId": "FARMER-1773208759210",
+      "quantity": "30",
+      "ph": "6.6",
+      "temperature": "37",
+      "quality": "Đạt chuẩn",
+      "syncStatus": "Chưa đồng bộ",
+      "date": "2026-03-11T06:10:23.720Z",
+      "createdAt": "2026-03-11T06:10:23.158Z"
+    }
+  ],
+  "factory_received": [],
+  "factory_products": [],
+  "milkLogs": [
+    {
+      "id": "BATCH-1773211748328",
+      "batchId": "",
+      "cowId": "C-1001",
+      "feedId": "TA-01",
+      "farmerId": "FARMER-1773208664176",
+      "quantity": "30",
+      "ph": "6.6",
+      "temperature": "37",
+      "quality": "Đạt chuẩn",
+      "syncStatus": "Chưa đồng bộ",
+      "date": "2026-03-11T06:49:07.963Z",
+      "createdAt": "2026-03-11T06:49:08.328Z"
+    }
+  ]
+}
